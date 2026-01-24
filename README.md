@@ -5,42 +5,42 @@
   <img src="https://img.shields.io/badge/Sector-Board_Games-050505?style=for-the-badge" alt="Sector Board Games">
 </div>
 
-**MGS: The Board Game Companion App** es una herramienta digital de apoyo diseñada específicamente para mejorar la experiencia de juego de **Metal Gear Solid: The Board Game**. 
+**MGS: The Board Game Companion App** is a digital support tool specifically designed to enhance the gameplay experience of **Metal Gear Solid: The Board Game**. 
 
-Inspirada en la estética industrial y táctica de la saga (especialmente en las interfaces de MGS3 y el clásico Codec), esta app elimina la necesidad de gestionar físicamente decenas de tokens, permitiendo que los jugadores se concentren en lo que importa: **el sigilo.**
-
----
-
-## 🛠️ Funcionalidades Clave (MVP 1.0)
-
-* **Operative Selection:** Configuración automática de habilidades y equipo inicial para Solid Snake, Meryl, Otacon y Gray Fox.
-* **Tactical Health Bar:** Gestión visual y rápida de puntos de vida con sistema de "Low HP" alert.
-* **Token Controller:** Tracking digital de Acciones y Focus Tokens (reseteables por turno).
-* **Smart Inventory:** Sistema de gestión de objetos con lógica de uso automático (ej. las raciones curan vida al usarse).
-* **Mission Log:** Registro en tiempo real de cada movimiento, daño recibido o ítem encontrado.
+Inspired by the saga's tactical and industrial aesthetics (particularly the MGS3 interfaces and the classic Codec), this app removes the need to physically manage dozens of tokens, allowing players to focus on what truly matters: **Stealth.**
 
 ---
 
-## 🎨 Dirección de Arte & Desarrollo
+## 🛠️ Key Features (MVP 1.0)
 
-Este proyecto combina una estética **"Functional-Retro"** con las necesidades de UX de los juegos de mesa modernos. 
+* **Operative Selection:** Automatic configuration of skills and starting equipment for Solid Snake, Meryl, Otacon, and Gray Fox.
+* **Tactical Health Bar:** Quick visual management of health points with a "Low HP" alert system.
+* **Token Controller:** Digital tracking of Actions and Focus Tokens (resettable per turn).
+* **Smart Inventory:** Equipment management system with auto-use logic (e.g., rations restore health when used).
+* **Mission Log:** Real-time logging of every movement, damage taken, or item found.
 
-* **UI/UX:** Diseñado para uso con pulgares (Thumb-friendly) en dispositivos móviles.
+---
+
+## 🎨 Art Direction & Development
+
+This project blends a **"Functional-Retro"** aesthetic with the UX needs of modern board games. 
+
+* **UI/UX:** Thumb-friendly design optimized for mobile devices.
 * **Tech Stack:** HTML5, Tailwind CSS, Bootstrap Icons, JavaScript (Vanilla).
 
 ---
 
-## 🚀 Despliegue Táctico
+## 🚀 Tactical Deployment
 
-**🌐 Prueba la aplicación online:** [https://estudiosventorrillo.github.io/mgs-boardgame-companion-app/](https://estudiosventorrillo.github.io/mgs-boardgame-companion-app/)
+**🌐 Try the app online:** [https://estudiosventorrillo.github.io/mgs-boardgame-companion-app/](https://estudiosventorrillo.github.io/mgs-boardgame-companion-app/)
 
 ---
 
-## 👤 Autor
+## 👤 Author
 
-**Juan Luis Valverde Salgueiro** *Director de Arte & Content Creator*
+**Juan Luis Valverde Salgueiro** *Art Director & Content Creator*
 
-¿Te gusta el proyecto o necesitas un perfil creativo para tu próximo gran negocio? ¡Hablemos!
+Do you like the project or need a creative profile for your next big business? Let's talk!
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juanluis-valverde/) 
 [![Behance](https://img.shields.io/badge/Behance-1769ff?style=flat&logo=behance&logoColor=white)](https://www.behance.net/estudiosventorrillo) 
@@ -48,6 +48,6 @@ Este proyecto combina una estética **"Functional-Retro"** con las necesidades d
 
 ---
 
-## ⚠️ Disclaimer Legal
+## ⚠️ Legal Disclaimer
 
-Este es un proyecto **Fan-Made** sin fines de lucro. No está afiliado, asociado, autorizado, respaldado ni conectado oficialmente con Konami Digital Entertainment ni con los diseñadores del juego de mesa original. Todas las imágenes y marcas registradas son propiedad de sus respectivos dueños.
+This is a **non-profit Fan-Made** project. It is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Konami Digital Entertainment or the original board game designers. All images and trademarks are the property of their respective owners.
