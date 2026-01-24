@@ -1,7 +1,9 @@
 # 📦 MGS: The Board Game Companion App
 
-<img src="https://img.shields.io/badge/Status-Alpha--MVP-00ff41?style=for-the-badge" alt="Status Alpha MVP">
-<img src="https://img.shields.io/badge/Sector-Board_Games-050505?style=for-the-badge" alt="Sector Board Games">
+<div align="left">
+  <img src="https://img.shields.io/badge/Status-Alpha--MVP-00ff41?style=for-the-badge" alt="Status Alpha MVP">
+  <img src="https://img.shields.io/badge/Sector-Board_Games-050505?style=for-the-badge" alt="Sector Board Games">
+</div>
 
 **MGS: The Board Game Companion App** es una herramienta digital de apoyo diseñada específicamente para mejorar la experiencia de juego de **Metal Gear Solid: The Board Game**. 
 
