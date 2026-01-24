@@ -28,6 +28,12 @@ Este proyecto combina una estética **"Functional-Retro"** con las necesidades d
 
 ---
 
+## 🚀 Despliegue Táctico
+
+**🌐 Prueba la aplicación online:** [https://estudiosventorrillo.github.io/mgs-boardgame-companion-app/](https://estudiosventorrillo.github.io/mgs-boardgame-companion-app/)
+
+---
+
 ## 👤 Autor
 
 **Juan Luis Valverde Salgueiro** *Director de Arte & Content Creator*
