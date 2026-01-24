@@ -7,7 +7,7 @@
 
 **MGS: The Board Game Companion App** es una herramienta digital de apoyo diseñada específicamente para mejorar la experiencia de juego de **Metal Gear Solid: The Board Game**. 
 
-Inspirada en la estética industrial y táctica de la saga (especialmente en las interfaces de MGS3D y el clásico Codec), esta app elimina la necesidad de gestionar físicamente decenas de tokens, permitiendo que los jugadores se concentren en lo que importa: **el sigilo.**
+Inspirada en la estética industrial y táctica de la saga (especialmente en las interfaces de MGS3 y el clásico Codec), esta app elimina la necesidad de gestionar físicamente decenas de tokens, permitiendo que los jugadores se concentren en lo que importa: **el sigilo.**
 
 ---
 
