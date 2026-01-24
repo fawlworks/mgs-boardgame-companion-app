@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -60,7 +60,7 @@
         </div>
 
         <footer class="credits">
-            <p class="mb-2">Diseñado y Desarrollado por Juan Luis Valverde</p>
+            <p class="mb-2">Designed and Developed by Juan Luis Valverde</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/juanluis-valverde/" target="_blank"><i class="bi bi-linkedin"></i></a>
                 <a href="https://www.behance.net/estudiosventorrillo" target="_blank"><i class="bi bi-behance"></i></a>
@@ -127,14 +127,14 @@
                 
                 <div class="flex gap-2 mt-4 p-2 mgs-panel bg-green-900/10">
                     <select id="item-selector" class="flex-grow bg-black border border-green-900 text-[10px] text-green-500 p-2 focus:outline-none">
-                        <option value="" disabled selected>-- SELECCIONAR EQUIPO --</option>
-                        <optgroup label="CONSUMIBLES">
+                        <option value="" disabled selected>-- SELECT EQUIPMENT --</option>
+                        <optgroup label="CONSUMABLES">
                             <option value="RATIONS">RATIONS (+30% HP)</option>
                             <option value="CARDBOARD BOX">CARDBOARD BOX</option>
                             <option value="CHAFF GRENADE">CHAFF GRENADE</option>
                             <option value="STUN GRENADE">STUN GRENADE</option>
                         </optgroup>
-                        <optgroup label="ARMAS Y EQUIPO">
+                        <optgroup label="WEAPONS & GEAR">
                             <option value="SOCOM">SOCOM (HANDGUN)</option>
                             <option value="FAMAS">FAMAS (RIFLE)</option>
                             <option value="HF BLADE">HF BLADE</option>
@@ -161,7 +161,7 @@
         </button>
 
         <footer class="credits">
-            <p class="mb-2">Diseñado y Desarrollado por Juan Luis Valverde</p>
+            <p class="mb-2">Designed and Developed by Juan Luis Valverde</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/juanluis-valverde/" target="_blank"><i class="bi bi-linkedin"></i></a>
                 <a href="https://www.behance.net/estudiosventorrillo" target="_blank"><i class="bi bi-behance"></i></a>
@@ -244,7 +244,7 @@
             if (!container) return;
             
             if (inv.length === 0) {
-                container.innerHTML = '<div class="text-[9px] text-center opacity-40">SIN EQUIPO DISPONIBLE</div>';
+                container.innerHTML = '<div class="text-[9px] text-center opacity-40">NO EQUIPMENT AVAILABLE</div>';
                 return;
             }
 
