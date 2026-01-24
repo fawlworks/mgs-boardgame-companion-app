@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MGS: The Board Game | Companion (Fan Made)</title>
     
-     <!-- NUEVO: LÍNEA PARA EL ICONITO (FAVICON) -->
-    <!-- Puedes usar la misma URL de tu foto de perfil o cualquier otra imagen que tengas -->
-    <link rel="icon" type="image/png" href="https://cdn2.steamgriddb.com/icon/c652ffbba1b471f8c3da23f9b3c387ce.png">
+     <link rel="icon" type="image/png" href="https://cdn2.steamgriddb.com/icon/c652ffbba1b471f8c3da23f9b3c387ce.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -25,17 +23,22 @@
 
         .screen { display: none; height: 100vh; padding: 15px; flex-direction: column; position: relative; z-index: 10; }
         .screen.active { display: flex; }
-        .mgs-panel { border: 1px solid var(--mgs-green); background: rgba(0,0,0,0.85); backdrop-filter: blur(2px); }
+        
+        .mgs-panel { border: 1px solid var(--mgs-green); background: rgba(0,0,0,0.85); box-shadow: 0 0 15px rgba(0,255,65,0.1); }
+        
         .token { width: 35px; height: 35px; border: 2px solid var(--mgs-green); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 10px; }
         .token.used { background: var(--mgs-green); color: black; box-shadow: 0 0 10px var(--mgs-green); }
         .token.focus { border-radius: 50%; }
-        .hp-btn { border: 1px solid var(--mgs-green); background: rgba(0,255,65,0.1); width: 40px; text-align: center; font-weight: bold; font-size: 20px; }
-        .tab-btn { border-bottom: 2px solid transparent; opacity: 0.5; padding: 10px 5px; }
+
+        .hp-btn { border: 1px solid var(--mgs-green); background: rgba(0,255,65,0.1); width: 40px; text-align: center; font-weight: bold; font-size: 20px; transition: 0.2s; }
+        .hp-btn:active { background: var(--mgs-green); color: black; }
+
+        .tab-btn { border-bottom: 2px solid transparent; opacity: 0.5; transition: 0.3s; padding: 10px 5px; }
         .tab-btn.active { opacity: 1; border-bottom: 2px solid var(--mgs-green); background: rgba(0,255,65,0.05); }
+
         .hidden { display: none !important; }
         .item-row { border-bottom: 1px solid rgba(0,255,65,0.2); padding: 8px 0; display: flex; justify-content: space-between; align-items: center; }
-        
-        /* Footer Styling */
+
         .credits { font-size: 9px; opacity: 0.6; text-align: center; margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(0,255,65,0.1); }
         .social-links a { margin: 0 8px; font-size: 14px; transition: 0.3s; color: var(--mgs-green); }
         .social-links a:hover { opacity: 1; text-shadow: 0 0 8px var(--mgs-green); }
@@ -45,14 +48,15 @@
 
     <div id="screen-selection" class="screen active justify-center">
         <h1 class="text-center text-xl mb-6 tracking-widest animate-pulse border-b border-green-900 pb-2">SELECT OPERATIVE</h1>
-        <div class="space-y-3 mb-4">
-            <button onclick="launchApp('SNAKE')" class="mgs-panel w-full p-4 flex justify-between items-center">SOLID SNAKE <i class="bi bi-chevron-right"></i></button>
-            <button onclick="launchApp('MERYL')" class="mgs-panel w-full p-4 flex justify-between items-center">MERYL SILVERBURGH <i class="bi bi-chevron-right"></i></button>
-            <button onclick="launchApp('OTACON')" class="mgs-panel w-full p-4 flex justify-between items-center">HAL EMMERICH <i class="bi bi-chevron-right"></i></button>
-            <button onclick="launchApp('FOX')" class="mgs-panel w-full p-4 flex justify-between items-center">GRAY FOX <i class="bi bi-chevron-right"></i></button>
+        <div class="space-y-3 mb-6">
+            <button onclick="launchApp('SNAKE')" class="mgs-panel w-full p-4 flex justify-between items-center text-sm">SOLID SNAKE <i class="bi bi-chevron-right"></i></button>
+            <button onclick="launchApp('MERYL')" class="mgs-panel w-full p-4 flex justify-between items-center text-sm">MERYL SILVERBURGH <i class="bi bi-chevron-right"></i></button>
+            <button onclick="launchApp('OTACON')" class="mgs-panel w-full p-4 flex justify-between items-center text-sm">HAL EMMERICH <i class="bi bi-chevron-right"></i></button>
+            <button onclick="launchApp('FOX')" class="mgs-panel w-full p-4 flex justify-between items-center text-sm">GRAY FOX <i class="bi bi-chevron-right"></i></button>
         </div>
-        <div class="mgs-panel p-3 mb-4">
-            <input type="text" id="alias-field" placeholder="ENTER ALIAS..." class="w-full bg-black border border-green-900 text-green-500 p-2 text-center focus:outline-none">
+        <div class="mgs-panel p-3 mb-6">
+            <p class="text-[10px] mb-1 opacity-60 text-center">CODENAME / ALIAS</p>
+            <input type="text" id="alias-field" placeholder="ENTER ALIAS..." class="w-full bg-black border border-green-900 text-green-500 p-2 text-center focus:outline-none text-sm">
         </div>
 
         <footer class="credits">
@@ -77,7 +81,10 @@
         </header>
 
         <div class="mgs-panel p-3 mb-3">
-            <div class="flex justify-between text-[10px] mb-2 uppercase"><span>Health Status</span><span id="ui-hp-percent">100%</span></div>
+            <div class="flex justify-between text-[10px] mb-2 uppercase">
+                <span>Health Status</span>
+                <span id="ui-hp-percent">100%</span>
+            </div>
             <div class="flex gap-2 items-center">
                 <button onclick="updateHP(-10)" class="hp-btn">-</button>
                 <div class="flex-grow h-4 border border-green-500 relative">
@@ -88,17 +95,17 @@
         </div>
 
         <div class="grid grid-cols-2 gap-2 mb-3">
-            <div class="mgs-panel p-2 text-center">
-                <p class="text-[9px] mb-2 opacity-60 font-bold">ACTIONS</p>
-                <div class="flex justify-between">
+            <div class="mgs-panel p-2">
+                <p class="text-[9px] mb-2">ACTIONS</p>
+                <div class="flex justify-between" id="action-box">
                     <div class="token" onclick="this.classList.toggle('used')">1</div>
                     <div class="token" onclick="this.classList.toggle('used')">2</div>
                     <div class="token" onclick="this.classList.toggle('used')">3</div>
                     <div class="token" onclick="this.classList.toggle('used')">4</div>
                 </div>
             </div>
-            <div class="mgs-panel p-2 text-center">
-                <p class="text-[9px] mb-2 opacity-60 font-bold">FOCUS</p>
+            <div class="mgs-panel p-2">
+                <p class="text-[9px] mb-2">FOCUS</p>
                 <div class="flex justify-between">
                     <div class="token focus" onclick="this.classList.toggle('used')">F</div>
                     <div class="token focus" onclick="this.classList.toggle('used')">F</div>
@@ -116,14 +123,37 @@
 
         <main class="mgs-panel flex-grow p-3 overflow-y-auto mb-2">
             <div id="tab-inv" class="tab-content">
-                <div id="inv-render"></div>
-                <div class="mt-4 flex gap-1">
-                    <input type="text" id="item-add-input" placeholder="NEW ITEM..." class="flex-grow bg-black border border-green-900 p-2 text-[10px] text-green-500">
-                    <button onclick="manualAddItem()" class="border border-green-500 px-3"><i class="bi bi-plus"></i></button>
+                <div id="items-container" class="grid grid-cols-1 gap-2 mb-4"></div>
+                
+                <div class="flex gap-2 mt-4 p-2 mgs-panel bg-green-900/10">
+                    <select id="item-selector" class="flex-grow bg-black border border-green-900 text-[10px] text-green-500 p-2 focus:outline-none">
+                        <option value="" disabled selected>-- SELECCIONAR EQUIPO --</option>
+                        <optgroup label="CONSUMIBLES">
+                            <option value="RATIONS">RATIONS (+30% HP)</option>
+                            <option value="CARDBOARD BOX">CARDBOARD BOX</option>
+                            <option value="CHAFF GRENADE">CHAFF GRENADE</option>
+                            <option value="STUN GRENADE">STUN GRENADE</option>
+                        </optgroup>
+                        <optgroup label="ARMAS Y EQUIPO">
+                            <option value="SOCOM">SOCOM (HANDGUN)</option>
+                            <option value="FAMAS">FAMAS (RIFLE)</option>
+                            <option value="HF BLADE">HF BLADE</option>
+                            <option value="STEALTH CAMO">STEALTH CAMO</option>
+                            <option value="MINE DETECTOR">MINE DETECTOR</option>
+                            <option value="NIGHT VISION GOGGLES">NVG GOGGLES</option>
+                        </optgroup>
+                    </select>
+                    <button onclick="addItemFromList()" class="border border-green-500 px-3 bg-green-900/30"><i class="bi bi-plus"></i></button>
                 </div>
             </div>
-            <div id="tab-skills" class="tab-content hidden"><div id="skills-render" class="space-y-4"></div></div>
-            <div id="tab-log" class="tab-content hidden text-[10px] space-y-1"><div id="log-render"></div></div>
+
+            <div id="tab-skills" class="tab-content hidden">
+                <div id="skills-render" class="space-y-4"></div>
+            </div>
+
+            <div id="tab-log" class="tab-content hidden text-[10px] space-y-1">
+                <div id="log-render"></div>
+            </div>
         </main>
 
         <button onclick="fullResetTurn()" class="mgs-panel w-full py-4 text-sm font-bold bg-green-900/20 active:bg-green-500 active:text-black mb-4">
@@ -142,31 +172,61 @@
 
     <script>
         const database = {
-            'SNAKE': { name: 'SOLID SNAKE', skills: [{n:'Expert Sneak', d:'Repeat 1 die on stealth rolls.'}, {n:'CQC', d:'+1 to Melee attacks.'}], items: ['SOCOM', 'BINOCULARS'] },
-            'MERYL': { name: 'MERYL SILVERBURGH', skills: [{n:'Agile', d:'Move through enemy spaces if no LOS.'}, {n:'Marksman', d:'Range +1 with handguns.'}], items: ['DESERT EAGLE', 'RATIONS'] },
-            'OTACON': { name: 'HAL EMMERICH', skills: [{n:'Hacker', d:'No Focus cost for terminal interaction.'}, {n:'Supply Box', d:'Start with 1 extra random item.'}], items: ['RATIONS', 'ADV STEALTH CAMO'] },
-            'FOX': { name: 'GRAY FOX', skills: [{n:'Exoskeleton', d:'Movement +1.'}, {n:'HF Blade', d:'Ignore enemy armor in melee.'}], items: ['HF BLADE', 'STEALTH CAMO'] }
+            'SNAKE': { 
+                name: 'SOLID SNAKE', 
+                skills: [{n:'Expert Sneak', d:'Repeat 1 die on stealth rolls.'}, {n:'CQC', d:'+1 to Melee attacks.'}],
+                items: ['SOCOM', 'BINOCULARS']
+            },
+            'MERYL': { 
+                name: 'MERYL SILVERBURGH', 
+                skills: [{n:'Agile', d:'Move through enemy spaces if no LOS.'}, {n:'Marksman', d:'Range +1 with handguns.'}],
+                items: ['DESERT EAGLE', 'RATIONS']
+            },
+            'OTACON': { 
+                name: 'HAL EMMERICH', 
+                skills: [{n:'Hacker', d:'No Focus cost for terminal interaction.'}, {n:'Supply Box', d:'Start with 1 extra random item.'}],
+                items: ['RATIONS', 'ADV STEALTH CAMO']
+            },
+            'FOX': { 
+                name: 'GRAY FOX', 
+                skills: [{n:'Exoskeleton', d:'Movement +1.'}, {n:'HF Blade', d:'Ignore enemy armor in melee.'}],
+                items: ['HF BLADE', 'STEALTH CAMO']
+            }
         };
 
-        let activeChar = null; let hp = 100; let inv = [];
+        let activeChar = null;
+        let hp = 100;
+        let inv = [];
 
         function launchApp(id) {
-            activeChar = database[id]; hp = 100; inv = [...activeChar.items];
+            activeChar = database[id];
+            hp = 100;
+            inv = [...activeChar.items];
             const alias = document.getElementById('alias-field').value;
+
             document.getElementById('ui-name').innerText = activeChar.name;
             document.getElementById('ui-alias').innerText = alias ? `Codename: ${alias}` : "";
-            renderSkills(); renderInventory(); updateHP(0); addToLog(`Link established with ${activeChar.name}`);
+            
+            renderSkills();
+            renderInventory();
+            updateHP(0);
+            addToLog(`Link established with ${activeChar.name}`);
+
             document.getElementById('screen-selection').classList.remove('active');
             document.getElementById('screen-main').classList.add('active');
         }
 
-        function resetApp() { if(confirm("ABORT MISSION?")) location.reload(); }
+        function resetApp() {
+            if(confirm("ABORT MISSION? SYSTEM WILL REBOOT.")) {
+                location.reload();
+            }
+        }
 
         function updateHP(val) {
             hp = Math.max(0, Math.min(100, hp + val));
             document.getElementById('ui-hp-bar').style.width = hp + "%";
             document.getElementById('ui-hp-percent').innerText = hp + "%";
-            if(val !== 0) addToLog(`HP change: ${val}%`);
+            if(val !== 0) addToLog(`HP change: ${val}% (Current: ${hp}%)`);
         }
 
         function renderSkills() {
@@ -180,21 +240,56 @@
         }
 
         function renderInventory() {
-            const container = document.getElementById('inv-render');
+            const container = document.getElementById('items-container');
+            if (!container) return;
+            
+            if (inv.length === 0) {
+                container.innerHTML = '<div class="text-[9px] text-center opacity-40">SIN EQUIPO DISPONIBLE</div>';
+                return;
+            }
+
             container.innerHTML = inv.map((item, i) => `
-                <div class="item-row"><span>${item}</span><button onclick="useItem(${i})" class="text-[9px] border border-green-500 px-2 py-1">USE</button></div>
+                <div class="item-row px-2">
+                    <span class="text-xs">${item}</span>
+                    <div class="flex gap-2">
+                        <button onclick="useItem(${i})" class="text-[9px] border border-green-500 px-2 py-1">USE</button>
+                        <button onclick="removeItem(${i})" class="text-red-500/60"><i class="bi bi-trash"></i></button>
+                    </div>
+                </div>
             `).join('');
         }
 
-        function useItem(index) {
-            const item = inv[index]; addToLog(`Used: ${item}`);
-            if(item === 'RATIONS') { updateHP(30); inv.splice(index, 1); }
+        function addItemFromList() {
+            const selector = document.getElementById('item-selector');
+            const selectedItem = selector.value;
+            if (selectedItem) {
+                inv.push(selectedItem);
+                addToLog(`Item added: ${selectedItem}`);
+                renderInventory();
+                selector.selectedIndex = 0;
+            }
+        }
+
+        function removeItem(index) {
+            inv.splice(index, 1);
             renderInventory();
         }
 
-        function manualAddItem() {
-            const input = document.getElementById('item-add-input');
-            if(input.value) { inv.push(input.value.toUpperCase()); addToLog(`Added: ${input.value}`); input.value = ""; renderInventory(); }
+        function useItem(index) {
+            const item = inv[index];
+            const consumables = ['RATIONS', 'CARDBOARD BOX', 'CHAFF GRENADE', 'STUN GRENADE'];
+            
+            addToLog(`Used item: ${item}`);
+            
+            if(item === 'RATIONS') {
+                updateHP(30);
+            }
+
+            if(consumables.includes(item)) {
+                inv.splice(index, 1);
+                addToLog(`System: ${item} expended.`);
+            }
+            renderInventory();
         }
 
         function switchTab(tabId) {
@@ -211,7 +306,7 @@
 
         function fullResetTurn() {
             document.querySelectorAll('.token').forEach(t => t.classList.remove('used'));
-            addToLog("Tokens refreshed.");
+            addToLog("New turn started. Tokens reset.");
         }
     </script>
 </body>
