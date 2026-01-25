@@ -2,30 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>MGS: The Board Game | Companion (Fan Made)</title>
     
-     <link rel="icon" type="image/png" href="https://cdn2.steamgriddb.com/icon/c652ffbba1b471f8c3da23f9b3c387ce.png">
+    <link rel="icon" type="image/png" href="https://cdn2.steamgriddb.com/icon/c652ffbba1b471f8c3da23f9b3c387ce.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <style>
         :root { --mgs-green: #00ff41; --mgs-bg: #050505; --mgs-border: #3d4c33; }
-        body { background-color: var(--mgs-bg); color: var(--mgs-green); font-family: 'Share Tech Mono', monospace; text-transform: uppercase; margin: 0; overflow: hidden; height: 100vh; }
+        
+        /* CORRECCIÓN PC: Quitamos el overflow hidden del body para evitar bloqueos */
+        body { 
+            background-color: var(--mgs-bg); 
+            color: var(--mgs-green); 
+            font-family: 'Share Tech Mono', monospace; 
+            text-transform: uppercase; 
+            margin: 0; 
+            height: 100dvh;
+            display: flex;
+            justify-content: center; /* Centra la app en PC */
+        }
         
         body::before {
             content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;
             background-image: url('https://w0.peakpx.com/wallpaper/488/372/HD-wallpaper-mgs-fox-logo-big-boss-camo-fox-game-metal-gear-mgs-ps-snake.jpg');
             background-size: cover; background-position: center; opacity: 0.12;
             filter: grayscale(100%) sepia(100%) hue-rotate(90deg) saturate(500%);
+            position: fixed; /* Mantiene el fondo fijo */
         }
 
-        .screen { display: none; height: 100vh; padding: 15px; flex-direction: column; position: relative; z-index: 10; }
+        /* CORRECCIÓN RESPONSIVE: Limitamos el ancho en PC y permitimos scroll interno si es necesario */
+        .screen { 
+            display: none; 
+            height: 100dvh; 
+            width: 100%;
+            max-width: 500px; /* Tamaño máximo tipo móvil para que no se deforme en PC */
+            padding: 15px; 
+            flex-direction: column; 
+            position: relative; 
+            z-index: 10; 
+            overflow-y: auto; /* Permite scroll si la pantalla es muy pequeña */
+            box-sizing: border-box;
+        }
         .screen.active { display: flex; }
         
         .mgs-panel { border: 1px solid var(--mgs-green); background: rgba(0,0,0,0.85); box-shadow: 0 0 15px rgba(0,255,65,0.1); }
         
+        /* Mantenemos tu proporción 70/30 */
+        .char-img { 
+            width: 100%; 
+            height: 70%; 
+            object-fit: cover; 
+            filter: grayscale(100%) sepia(100%) hue-rotate(90deg) saturate(400%) contrast(120%);
+            border-bottom: 1px solid var(--mgs-green);
+            opacity: 0.8;
+        }
+
         .token { width: 35px; height: 35px; border: 2px solid var(--mgs-green); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 10px; }
         .token.used { background: var(--mgs-green); color: black; box-shadow: 0 0 10px var(--mgs-green); }
         .token.focus { border-radius: 50%; }
@@ -46,17 +80,41 @@
 </head>
 <body>
 
-    <div id="screen-selection" class="screen active justify-center">
-        <h1 class="text-center text-xl mb-6 tracking-widest animate-pulse border-b border-green-900 pb-2">SELECT OPERATIVE</h1>
-        <div class="space-y-3 mb-6">
-            <button onclick="launchApp('SNAKE')" class="mgs-panel w-full p-4 flex justify-between items-center text-sm">SOLID SNAKE <i class="bi bi-chevron-right"></i></button>
-            <button onclick="launchApp('MERYL')" class="mgs-panel w-full p-4 flex justify-between items-center text-sm">MERYL SILVERBURGH <i class="bi bi-chevron-right"></i></button>
-            <button onclick="launchApp('OTACON')" class="mgs-panel w-full p-4 flex justify-between items-center text-sm">HAL EMMERICH <i class="bi bi-chevron-right"></i></button>
-            <button onclick="launchApp('FOX')" class="mgs-panel w-full p-4 flex justify-between items-center text-sm">GRAY FOX <i class="bi bi-chevron-right"></i></button>
-        </div>
-        <div class="mgs-panel p-3 mb-6">
-            <p class="text-[10px] mb-1 opacity-60 text-center">CODENAME / ALIAS</p>
-            <input type="text" id="alias-field" placeholder="ENTER ALIAS..." class="w-full bg-black border border-green-900 text-green-500 p-2 text-center focus:outline-none text-sm">
+    <div id="screen-selection" class="screen active">
+        <h1 class="text-center text-2xl mt-4 mb-2 font-bold tracking-widest animate-pulse text-mgs-green drop-shadow-[0_0_5px_rgba(0,255,65,0.5)]">
+            WELCOME TO<br>MGS: THE BOARD GAME<br>COMPANION
+        </h1>
+        <h2 class="text-center text-sm mb-4 tracking-widest border-b border-green-900 pb-2 opacity-80">SELECT OPERATIVE</h2>
+        
+        <div class="flex-grow grid grid-cols-2 gap-3 mb-4 min-h-[400px]">
+            <button onclick="launchApp('SNAKE')" class="mgs-panel w-full h-full overflow-hidden flex flex-col hover:bg-green-900/20 transition-all">
+                <img src="https://static.wikia.nocookie.net/metalgear/images/6/66/Solid_Snake_MGS2.png" class="char-img" alt="Snake">
+                <div class="h-[30%] flex flex-col justify-center items-center w-full bg-black/50">
+                    <span class="text-sm font-bold block leading-tight px-1">SOLID SNAKE</span>
+                    <span class="text-[9px] opacity-70 tracking-wider">(INFILTRATOR)</span>
+                </div>
+            </button>
+            <button onclick="launchApp('MERYL')" class="mgs-panel w-full h-full overflow-hidden flex flex-col hover:bg-green-900/20 transition-all">
+                <img src="https://static.wikia.nocookie.net/movie-spoof-films/images/4/4c/TSMerylPP.png" class="char-img" alt="Meryl">
+                <div class="h-[30%] flex flex-col justify-center items-center w-full bg-black/50">
+                    <span class="text-sm font-bold block leading-tight px-1">MERYL SILVERBURGH</span>
+                    <span class="text-[9px] opacity-70 tracking-wider">(COMBAT)</span>
+                </div>
+            </button>
+            <button onclick="launchApp('OTACON')" class="mgs-panel w-full h-full overflow-hidden flex flex-col hover:bg-green-900/20 transition-all">
+                <img src="https://static.wikia.nocookie.net/metalgear/images/3/3b/MGS2OtaconPP.png/revision/latest?cb=20160723004601&path-prefix=es" class="char-img" alt="Otacon">
+                <div class="h-[30%] flex flex-col justify-center items-center w-full bg-black/50">
+                    <span class="text-sm font-bold block leading-tight px-1">OTACON</span>
+                    <span class="text-[9px] opacity-70 tracking-wider">(SUPPORT)</span>
+                </div>
+            </button>
+            <button onclick="launchApp('FOX')" class="mgs-panel w-full h-full overflow-hidden flex flex-col hover:bg-green-900/20 transition-all">
+                <img src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/the-phantom-pain/1/12/IMG_0036.PNG?width=640" class="char-img" alt="Fox">
+                <div class="h-[30%] flex flex-col justify-center items-center w-full bg-black/50">
+                    <span class="text-sm font-bold block leading-tight px-1">GRAY FOX</span>
+                    <span class="text-[9px] opacity-70 tracking-wider">(NINJA)</span>
+                </div>
+            </button>
         </div>
 
         <footer class="credits">
@@ -73,7 +131,6 @@
         <header class="flex justify-between items-start mb-2">
             <div>
                 <h2 id="ui-name" class="text-lg font-bold leading-none">OPERATIVE</h2>
-                <span id="ui-alias" class="text-[10px] opacity-60 uppercase"></span>
             </div>
             <button onclick="resetApp()" class="border border-red-500 text-red-500 text-[9px] px-2 py-1 bg-red-900/10 uppercase">
                 <i class="bi bi-x-circle"></i> Abort
@@ -124,7 +181,6 @@
         <main class="mgs-panel flex-grow p-3 overflow-y-auto mb-2">
             <div id="tab-inv" class="tab-content">
                 <div id="items-container" class="grid grid-cols-1 gap-2 mb-4"></div>
-                
                 <div class="flex gap-2 mt-4 p-2 mgs-panel bg-green-900/10">
                     <select id="item-selector" class="flex-grow bg-black border border-green-900 text-[10px] text-green-500 p-2 focus:outline-none">
                         <option value="" disabled selected>-- SELECT EQUIPMENT --</option>
@@ -172,55 +228,27 @@
 
     <script>
         const database = {
-            'SNAKE': { 
-                name: 'SOLID SNAKE', 
-                skills: [{n:'Expert Sneak', d:'Repeat 1 die on stealth rolls.'}, {n:'CQC', d:'+1 to Melee attacks.'}],
-                items: ['SOCOM', 'BINOCULARS']
-            },
-            'MERYL': { 
-                name: 'MERYL SILVERBURGH', 
-                skills: [{n:'Agile', d:'Move through enemy spaces if no LOS.'}, {n:'Marksman', d:'Range +1 with handguns.'}],
-                items: ['DESERT EAGLE', 'RATIONS']
-            },
-            'OTACON': { 
-                name: 'HAL EMMERICH', 
-                skills: [{n:'Hacker', d:'No Focus cost for terminal interaction.'}, {n:'Supply Box', d:'Start with 1 extra random item.'}],
-                items: ['RATIONS', 'ADV STEALTH CAMO']
-            },
-            'FOX': { 
-                name: 'GRAY FOX', 
-                skills: [{n:'Exoskeleton', d:'Movement +1.'}, {n:'HF Blade', d:'Ignore enemy armor in melee.'}],
-                items: ['HF BLADE', 'STEALTH CAMO']
-            }
+            'SNAKE': { name: 'SOLID SNAKE', skills: [{n:'Expert Sneak', d:'Repeat 1 die on stealth rolls.'}, {n:'CQC', d:'+1 to Melee attacks.'}], items: ['SOCOM', 'BINOCULARS'] },
+            'MERYL': { name: 'MERYL SILVERBURGH', skills: [{n:'Agile', d:'Move through enemy spaces if no LOS.'}, {n:'Marksman', d:'Range +1 with handguns.'}], items: ['DESERT EAGLE', 'RATIONS'] },
+            'OTACON': { name: 'OTACON', skills: [{n:'Hacker', d:'No Focus cost for terminal interaction.'}, {n:'Supply Box', d:'Start with 1 extra random item.'}], items: ['RATIONS', 'ADV STEALTH CAMO'] },
+            'FOX': { name: 'GRAY FOX', skills: [{n:'Exoskeleton', d:'Movement +1.'}, {n:'HF Blade', d:'Ignore enemy armor in melee.'}], items: ['HF BLADE', 'STEALTH CAMO'] }
         };
 
-        let activeChar = null;
-        let hp = 100;
-        let inv = [];
+        let activeChar = null; let hp = 100; let inv = [];
 
         function launchApp(id) {
             activeChar = database[id];
             hp = 100;
             inv = [...activeChar.items];
-            const alias = document.getElementById('alias-field').value;
-
             document.getElementById('ui-name').innerText = activeChar.name;
-            document.getElementById('ui-alias').innerText = alias ? `Codename: ${alias}` : "";
-            
-            renderSkills();
-            renderInventory();
-            updateHP(0);
+            renderSkills(); renderInventory(); updateHP(0);
             addToLog(`Link established with ${activeChar.name}`);
-
             document.getElementById('screen-selection').classList.remove('active');
             document.getElementById('screen-main').classList.add('active');
+            window.scrollTo(0,0); // Asegura que la nueva pantalla empiece arriba
         }
 
-        function resetApp() {
-            if(confirm("ABORT MISSION? SYSTEM WILL REBOOT.")) {
-                location.reload();
-            }
-        }
+        function resetApp() { if(confirm("ABORT MISSION? SYSTEM WILL REBOOT.")) location.reload(); }
 
         function updateHP(val) {
             hp = Math.max(0, Math.min(100, hp + val));
@@ -242,12 +270,7 @@
         function renderInventory() {
             const container = document.getElementById('items-container');
             if (!container) return;
-            
-            if (inv.length === 0) {
-                container.innerHTML = '<div class="text-[9px] text-center opacity-40">NO EQUIPMENT AVAILABLE</div>';
-                return;
-            }
-
+            if (inv.length === 0) { container.innerHTML = '<div class="text-[9px] text-center opacity-40">NO EQUIPMENT AVAILABLE</div>'; return; }
             container.innerHTML = inv.map((item, i) => `
                 <div class="item-row px-2">
                     <span class="text-xs">${item}</span>
@@ -262,33 +285,17 @@
         function addItemFromList() {
             const selector = document.getElementById('item-selector');
             const selectedItem = selector.value;
-            if (selectedItem) {
-                inv.push(selectedItem);
-                addToLog(`Item added: ${selectedItem}`);
-                renderInventory();
-                selector.selectedIndex = 0;
-            }
+            if (selectedItem) { inv.push(selectedItem); addToLog(`Item added: ${selectedItem}`); renderInventory(); selector.selectedIndex = 0; }
         }
 
-        function removeItem(index) {
-            inv.splice(index, 1);
-            renderInventory();
-        }
+        function removeItem(index) { inv.splice(index, 1); renderInventory(); }
 
         function useItem(index) {
             const item = inv[index];
             const consumables = ['RATIONS', 'CARDBOARD BOX', 'CHAFF GRENADE', 'STUN GRENADE'];
-            
             addToLog(`Used item: ${item}`);
-            
-            if(item === 'RATIONS') {
-                updateHP(30);
-            }
-
-            if(consumables.includes(item)) {
-                inv.splice(index, 1);
-                addToLog(`System: ${item} expended.`);
-            }
+            if(item === 'RATIONS') updateHP(30);
+            if(consumables.includes(item)) inv.splice(index, 1);
             renderInventory();
         }
 
