@@ -32,7 +32,7 @@ This project blends a **"Functional-Retro"** aesthetic with the UX needs of mode
 
 ## 🚀 Tactical Deployment
 
-**🌐 Try the app online:** [https://estudiosventorrillo.github.io/mgs-boardgame-companion-app/](https://estudiosventorrillo.github.io/mgs-boardgame-companion-app/)
+**🌐 Try the app online:** [https://fawlworks.github.io/mgs-boardgame-companion-app/](https://fawlworks.github.io/mgs-boardgame-companion-app/)
 
 ---
 
@@ -43,8 +43,8 @@ This project blends a **"Functional-Retro"** aesthetic with the UX needs of mode
 Do you like the project or need a creative profile for your next big business? Let's talk!
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juanluis-valverde/) 
-[![Behance](https://img.shields.io/badge/Behance-1769ff?style=flat&logo=behance&logoColor=white)](https://www.behance.net/estudiosventorrillo) 
-[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white)](https://www.instagram.com/estudiosventorrillo/?hl=es)
+[![Behance](https://img.shields.io/badge/Behance-1769ff?style=flat&logo=behance&logoColor=white)](https://www.behance.net/fawlworks) 
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat&logo=instagram&logoColor=white)](https://www.instagram.com/fawlworks/?hl=es)
 
 ---
 
